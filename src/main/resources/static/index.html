@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CreatiVerse • Users</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="background">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <header class="app-header">
+      <div class="brand">
+        <span class="logo">✦</span>
+        <h1>CreatiVerse Users</h1>
+      </div>
+      <div class="actions">
+        <input id="search" type="search" placeholder="Search by name or email…" aria-label="Search users" />
+        <button id="refresh" class="btn secondary" title="Refresh list">↻</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel create-panel">
+        <h2>Add a new user</h2>
+        <form id="create-form" autocomplete="off">
+          <div class="grid">
+            <label>
+              <span>Name</span>
+              <input id="name" name="name" required placeholder="e.g. Ada Lovelace" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input id="email" name="email" type="email" required placeholder="ada@analytical.engine" />
+            </label>
+            <label>
+              <span>Avatar URL</span>
+              <input id="avatarUrl" name="avatarUrl" placeholder="https://unavatar.io/ada" />
+            </label>
+          </div>
+          <button class="btn primary" type="submit">Create user</button>
+        </form>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="list-header">
+          <h2>Users</h2>
+          <span id="count" class="muted">0</span>
+        </div>
+        <ul id="users" class="cards" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="user-card-template">
+      <li class="card">
+        <div class="left">
+          <img class="avatar" alt="" />
+          <div class="meta">
+            <div class="name"></div>
+            <div class="email"></div>
+            <div class="timestamp"></div>
+          </div>
+        </div>
+        <div class="right">
+          <button class="btn small secondary edit">Edit</button>
+          <button class="btn small danger delete">Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <dialog id="edit-dialog">
+      <form method="dialog" id="edit-form" class="dialog-form">
+        <h3>Edit user</h3>
+        <input type="hidden" id="edit-id" />
+        <label>
+          <span>Name</span>
+          <input id="edit-name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input id="edit-email" type="email" required />
+        </label>
+        <label>
+          <span>Avatar URL</span>
+          <input id="edit-avatar" />
+        </label>
+        <div class="dialog-actions">
+          <button class="btn secondary" value="cancel">Cancel</button>
+          <button class="btn primary" value="confirm">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+  </html>
+
